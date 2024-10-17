@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;600;700;800&display=swap');
+
+.login-register-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    margin: 0; /* Ensure no margin on the container */
+    padding: 0; /* Ensure no padding on the container */
+    background-color: #CEBE93;
+    background-image: url('@/assets/background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.regular-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #CEBE93;
+    background-image: url('@/assets/home_background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+@layer components {
+    .home-background {
+        @apply relative flex flex-col items-center justify-start min-h-screen;
+        margin: 0;
+        padding: 0;
+        font-family: 'Nunito Sans', sans-serif;
+        overflow: hidden;
+    }
+
+    /* Pseudo-element for background and mask */
+    .home-background::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 4;
+        /* Background layer */
+        background-color: #CEBE93;
+        background-image: url('@/assets/home_background.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top center;
+
+        /* Mask */
+        mask-image: url('@/assets/mask.svg');
+        mask-size: cover;
+        mask-repeat: no-repeat;
+        mask-position: top center;
+
+        /* Webkit Mask for cross-browser compatibility */
+        -webkit-mask-image: url('@/assets/mask.svg');
+        -webkit-mask-size: cover;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: top center;
+    }
+
+    .home-background::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        /* Dark shape layer */
+        background-image: url('@/assets/only_darker_shape.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top center;
+        pointer-events: none;
+    }
+
+    .content {
+        position: relative;
+        z-index: 5;
+    }
+}
+
+body {
+    background-color: #CEBE93;
+}
+
+/* InputText: Override PrimeVue styles */
+.p-inputtext {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #DED2D9 !important;
+    border-radius: 0.3rem !important;
+    outline: none;
+    font-size: 14px;
+}
+.p-inputtext::placeholder {
+    color: #E0E0E0;
+}
+.p-inputtext:focus {
+    border-color: #CEBE93 !important;
+    box-shadow: 0 0 0 2px rgba(90, 92, 72, 0.1) !important;
+}
+
+/* Button Styling */
+.p-button-rounded {
+    border-radius: 0.5rem !important;
+    padding: 12px;
+}
+
+/* Blurred overlay for the background */
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(5px);
+    z-index: 999;
+}
+
+/* PrimeVue Dialog Styling */
+.p-dialog {
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.custom-otp-input {
+    width: 45px;
+    /* Adjust the width of the OTP cells */
+    height: 45px;
+    /* Adjust the height of the OTP cells */
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #DED2D9 !important;
+    border-radius: 0.3rem !important;
+    font-size: 18px;
+    /* Slightly larger font for better readability */
+    outline: none;
+}
+.custom-otp-input:focus {
+    border-color: #CEBE93 !important;
+    box-shadow: 0 0 0 2px rgba(90, 92, 72, 0.1) !important;
+}
+
+/* Style for the unselected radio buttons */
+.p-radiobutton .p-radiobutton-box {
+    border-radius: 50% !important;
+    border: 1px solid #ccc !important;
+}
